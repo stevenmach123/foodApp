@@ -1,0 +1,189 @@
+
+
+  <ion-content class="screen_big" [fullscreen]="true">
+
+  <nav id="big"  [className]="'big'" (click)="outClick($event)" >
+    <div style="display:flex ;width: 50%">
+
+    <div style="display:flex"> 
+      <img class="hover1" (click)='navClick($event);out_total(sum_box)' class="icon_size" id="nav1"  src="assets/icon/icon_filter1.png">  
+
+      <div id="total_box"  #sum_box  class="out3"   style=" display:flex;position:absolute; text-align:center ; height:fit-content;  z-index:2;background-color:#C4D7E0;"> 
+        <div  style="position:absolute; margin-left:80%" ><ion-icon class="icon_size2" (click)="hide_total(sum_box)" name="arrow-back-outline"></ion-icon></div>
+          <div style="font-size:20px;"><span>{{is_month}}</span><span>&nbsp;{{id_day}}</span></div>
+          <div> Total</div>
+
+          <div style="margin-top: 5px;font-size:19px">
+            <span>{{sum_intake.calories}}</span><span>&nbsp;gCal</span>
+          </div>
+          
+
+        <table id="total_4" style="width:100%; margin-top:5px">
+            <tr>
+                <td style="color:red;font-weight:500"> <div>Protein: </div><span>{{sum_intake.protein}}</span><span>g</span> </td>
+                <td style="color:rgb(224, 151, 17); font-weight:500"><div>Carb: </div><span>{{sum_intake.carb}}</span><span>g</span> </td>
+            </tr>
+              <tr>
+                <td style="color: yellow ;font-weight:500"  ><div>Fat: </div><span>{{sum_intake.fat}}</span><span>g</span> </td>
+                <td style="color: rgb(46, 198, 147) ;font-weight:500" ><div>Mineral: </div><span>{{sum_intake.mineral}}</span><span>g</span> </td>
+              </tr>
+
+            
+        </table>
+
+        <table style="margin-top: 4px;">
+          <tr> 
+            <td style="color:red;font-weight:500"  >{{sum_intake.perProtein()}} <span>%</span></td>
+            <td style="color:rgb(224, 151, 17); font-weight:500"  > <span>{{sum_intake.perCarb()}}</span>  <span>%</span>    </td>
+            <td style="color: yellow ;font-weight:500" > <span>{{sum_intake.perFat()}}</span>  <span>%</span></td>
+            <td style="color: rgb(46, 198, 147) ;font-weight:500"  > <span>{{sum_intake.perMineral()}}</span>  <span>%</span></td>
+          </tr>
+        </table>
+
+
+
+      </div>
+
+
+    </div>
+
+    </div>
+
+    <div  style="display:flex;flex-direction:row-reverse;width:50%">
+        
+        <div  type="button" id="but1">
+           <div id="badge"  style="position:absolute;transform:translate(-5px,1px);"><ion-badge [class.hid]="new_item<=0?true:false"  style ="--background:red;font-size:15px;">{{new_item}}</ion-badge></div>
+         <!-- ;vis_badge() --> <img class="hover2"  (click)='navClick($event)'   class="icon_size" id="nav2"  src="assets/icon/icon_down1.jpg">
+        </div>
+        
+        <div class="phone_only" id="drop2"  style="position:absolute;text-align: center; justify-content: center ;transform: translate(-1px,73px); background-color:rgb(228, 217, 201);"  [class]="{'hid':!drop2_con}"     >
+          <ion-list>
+          <ion-item style="--background:rgb(228, 217, 201)"><div class="center" (click)="naviCalendar()"   routerLinkActive='active' ><a class ="dropdown-item"    >Calendar</a> <ion-icon name="chevron-forward-outline"></ion-icon></div></ion-item>
+          <ion-item style="--background:rgb(228, 217, 201)"><div class="center" (click)="naviRecord()"   ><a class="dropdown-item"   >Record Cards</a> <ion-icon name="chevron-forward-outline"></ion-icon></div></ion-item>
+          </ion-list>
+         
+
+          <div id = "arrow_pic"  style="position:absolute; align-items: center ;background-color:rgb(228, 217, 201) ;margin-left: 42%; transform: translateY(-5px);height:25px;z-index:10" >
+              <img  *ngIf="display_arrow" (mousedown)= "display_arrow = !display_arrow"  style="width:30px; height:20px;"src ="assets/icon/down.png"> 
+              <img   *ngIf="!display_arrow" (mousedown)="display_arrow = !display_arrow" style="width:30px; height:20px;"src ="assets/icon/up.png">
+          </div> 
+              
+         
+          <div [id]="'drop2_wrap'" #wrappy2 class="drop2_wrap" 
+          [class]="!display_arrow?'phone_only drop_down':'phone_only drop_up'" 
+          [style]="{height:'max-content'}" 
+          >
+          
+          <!-- [class]="{'overflow-y': !display_arrow ? 'scroll' : 'hidden','max-height': !display_arrow ? '510px' : '0px', height:'max-content'}"  -->
+
+        
+          
+            <ion-card *ngFor="let food of food_stored;index as i"  class="phone_only my_card_wrapper" [attr.id]="'selected_'+food.nameParse()" >
+              
+             
+             
+             
+              
+            
+              <img src={{food.pic}}  class="img">
+            
+            
+              <ion-card-content class="my_card"> 
+
+                  <p style="font-size:22px;margin-bottom:0px;"  class="margin_unique" >{{food.name}}</p>
+                  
+                 
+                  <div style="display:flex; justify-content: center;height:20px">
+                    <div #calo [id]="'calories'" style="width:fit-content;" class="margin_unique">{{food.calories}}</div><div style="line-height: 20px;">&nbsp;gcal</div>
+                  </div>
+
+                  <div class="margin_unique">
+                    <ion-button (mousedown)= 'yo2($event,food)' style="--background:red;width:20%  ;height:60%;align-items: center;" >-</ion-button>
+                    <div #quan [id]="'quantity'" style="display:inline-block;margin:0px 10px">1</div>
+                    <ion-button (mousedown)= 'yo2($event,food)' style="--background:blue;width:20%  ;height:60%;align-items: center">+</ion-button>
+
+                  </div>
+                
+            
+              </ion-card-content>
+              
+            
+                
+              
+                
+          
+            
+                </ion-card>
+            
+
+  
+        
+      
+        </div>     
+        
+          
+          
+        
+            
+        
+        
+        </div>    
+  </div>   
+            
+  
+        
+</nav>
+
+
+
+
+
+
+
+  
+  <ion-scroll class="screen"  scrollY=true >
+   
+   <!-- <div style="margin-top:50px"></div> -->
+    
+    
+    <!--
+    <ion-item style="width:fit-content" >
+   
+      <ion-content class="ion-text-wrap">
+        <ion-row>
+          <ion-col size=8>
+          
+            <p>AAA</p>
+            <p>BB</p>
+            
+          </ion-col>
+          <ion-col>
+          
+            <p>DD</p>
+            <p>RR</p>
+            
+          </ion-col>
+      
+        
+        </ion-row>
+
+
+      </ion-content>
+      <ion-label  class="ion-text-wrap" >
+        <ion-card>
+          <img src="assets/foods/bison.png">
+          <div>dsdsd</div>
+          <h3>fdfdf</h3> 
+          
+      
+      </ion-card>
+    </ion-label>
+    </ion-item>   -->
+  
+    <food-root  (sent_obj)="yo($event)"  ></food-root>   
+    
+  </ion-scroll>
+
+  
+</ion-content>
+

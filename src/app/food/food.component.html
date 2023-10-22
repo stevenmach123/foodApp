@@ -1,0 +1,30 @@
+<div class="container_food">
+    
+
+  <div class="phone_only hi_item"   *ngFor = "let item of food_shop; index as i" [class.margin_top]="i >1" [id] ="item.nameParse()"  >
+      <img [id]="'img'" src ={{item.pic}}  > 
+      
+      <div style="background-color:#B2C8DF;">
+          <div> {{item.name}}</div>
+          <div class="info_item" style= "display:flex;justify-content:space-evenly;"> 
+            <p style="margin-bottom:0px;"  >Protein:<br>{{item.protein}}&nbsp;g</p>
+              <p style="margin-bottom:0px;" >Carb:<br>{{item.carb}}&nbsp;g</p>
+              
+          </div> 
+          <div class="info_item" style= "display:flex;justify-content:space-evenly;"> 
+            <p style="margin-bottom:0px;">Fat:<br>{{item.fat}}&nbsp;g</p>
+              <p style="margin-bottom:0px;" >Mineral:<br>{{item.mineral}}&nbsp;g</p>
+          </div> 
+          <div id="calories" style="margin-left:10% ;">{{item.calories}}&nbsp;<div style="display: inline-block;font-size:9px;">(gcal/400g)</div>    </div>
+      </div> 
+     
+       <div style="width:min-content; margin-left: auto;margin-right: auto" (mousedown)="sent_food(item)"  ><ion-button expand="block" style="height:25px; ">Add</ion-button><div>
+     
+
+
+  </div>  
+  
+
+
+</div>
+

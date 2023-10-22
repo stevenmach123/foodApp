@@ -1,0 +1,51 @@
+.container_food{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px 10px 0 10px;
+    margin-top:80px;
+    justify-content: space-evenly;
+    
+    
+
+}
+
+
+@media screen and (min-width: 375px) 
+and (max-width: 812px)  {
+    .hi_item.phone_only{
+        width:43%;
+        
+    
+    }
+}
+
+
+.hi_item {
+    
+    display:flex;
+    flex-direction: column;
+    height:max-content;
+    width:34%; 
+    text-align: center;
+    margin-bottom: 0px;
+    border-radius:12px;
+    box-shadow:0px 0px 7px white; 
+    transition: 900ms ease;
+
+    
+}
+.hi_item:hover{
+    box-shadow:0px 0px 25px white;  
+    transform: scale(1.08,1.08);
+    
+}
+
+
+.hi_item .info_item p {
+    font-size: 12px;
+}
+.margin_top{
+    margin-top: 20px;
+}
+

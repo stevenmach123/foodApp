@@ -1,0 +1,110 @@
+html{
+    background-color: black ;
+}
+.icon_size{
+    width:50px;
+    height:50px;
+}
+
+.big_box{
+  
+    transform: translateY(70px); 
+    
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    
+   
+    height:80%;
+   width: 100%;
+    
+
+
+}
+.outer{
+    width:355px;
+    
+    
+}
+
+
+
+.title{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    background-color: #6E85B7; 
+    padding: 0px 5px;   
+    font-size: 30px;
+    height:90px;
+}
+.weekDays{
+    display:flex;
+    justify-content: center; 
+    background-color: #C4D7E0;
+    height:30px;
+    align-items: center;
+    
+}
+.weekDays div:not(.endweek){
+    width:50px;
+    
+   
+}
+.weekDays div{
+    font-size: 16px;
+}
+.days {
+    display:flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color:  #c6dfeb;
+    padding-top: 8px;
+}
+.days div p{
+    margin-top: 30%;
+    
+    width:27px;
+    height:27px;
+}
+
+.days div{
+    display:flex;
+    width:50px;
+    height:37px;
+   
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+ 
+  
+}
+.opa{
+    opacity:0.5;
+}
+.ful_opa{
+    opacity:0;
+    
+}
+
+.dis{
+    pointer-events: none;
+}
+
+.blue_day{
+    background-color: aqua;
+}
+
+/*
+.days tr td{
+   height:37px;
+   width:80px;
+   text-align: center;
+   vertical-align: middle;
+   border:1px solid pink
+}  */
+.yellow{
+    background:yellow ;
+
+}
