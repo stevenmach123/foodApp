@@ -1,5 +1,5 @@
 # Link 
-* Link: https://foodapp-aa238.web.app/home
+* Link: https://foodapp-aa238.web.app/home Mobile view also available :) 
 * Demo: https://youtu.be/7MGAUufEvWY
 ## Step to reproduce
 ### npm package
